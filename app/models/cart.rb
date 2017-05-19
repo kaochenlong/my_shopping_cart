@@ -20,13 +20,13 @@ class Cart
   end
 
   def total_price
-    #total = 0
-    #items.each do |item|
-      #total += item.total_price
-    #end
-    #total
+    total = items.reduce(0) { |total, item| total + item.total_price }
 
-    items.reduce(0) { |total, item| total + item.total_price }
+    if Time.now.month == 1 && total >= 1000
+      total -= 100
+    else
+      total
+    end
   end
 end
 
