@@ -16,8 +16,8 @@ RSpec.describe Cart, type: :model do
       5.times { cart.add_item 2 }
 
       expect(cart.items.length).to be 2
-      #expect(cart.items.first.quantity).to be 3
-      #expect(cart.items.last.quantity).to be 5
+      expect(cart.items.first.quantity).to be 3
+      expect(cart.items.last.quantity).to be 5
     end
 
     #it "商品可以放到購物車裡，也可以再拿出來。"
