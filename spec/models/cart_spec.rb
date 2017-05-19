@@ -20,8 +20,8 @@ RSpec.describe Cart, type: :model do
     end
 
     it "商品可以放到購物車裡，也可以再拿出來。" do
-      p1 = Product.create(title: "P1", price: 100)
-      p2 = Product.create(title: "P2", price: 200)
+      p1 = FactoryGirl.create(:product)
+      p2 = FactoryGirl.create(:product)
 
       3.times { cart.add_item(p1.id) }
       4.times { cart.add_item(p2.id) }
@@ -31,8 +31,8 @@ RSpec.describe Cart, type: :model do
     end
 
     it "可以計算整台購物車的總消費金額。" do
-      p1 = Product.create(title: "P1", price: 100)
-      p2 = Product.create(title: "P2", price: 200)
+      p1 = FactoryGirl.create(:product, :price_100)
+      p2 = FactoryGirl.create(:product, :price_200)
 
       3.times { cart.add_item(p1.id) }
       4.times { cart.add_item(p2.id) }
@@ -41,8 +41,8 @@ RSpec.describe Cart, type: :model do
     end
 
     it "特別活動 - 或是滿額滿千元折百元" do
-      p1 = Product.create(title: "P1", price: 100)
-      p2 = Product.create(title: "P2", price: 200)
+      p1 = FactoryGirl.create(:product, :price_100)
+      p2 = FactoryGirl.create(:product, :price_200)
 
       3.times { cart.add_item(p1.id) }
       4.times { cart.add_item(p2.id) }
