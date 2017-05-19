@@ -3,15 +3,14 @@ require 'rails_helper'
 RSpec.describe Cart, type: :model do
 
   describe "基本功能" do
+    let(:cart) { Cart.new }
+
     it "可以把商品丟到到購物車裡，然後購物車裡就有東西了。" do
-      cart = Cart.new
       cart.add_item 1
-      expect(cart.empty?).to be false
-      #expect(cart).not_to be_empty
+      expect(cart).not_to be_empty
     end
 
     it "加了相同商品到購物車裡，購買項目不會增加，但數量會改變。" do
-      cart = Cart.new
       3.times { cart.add_item 1 }
       5.times { cart.add_item 2 }
 
@@ -24,7 +23,6 @@ RSpec.describe Cart, type: :model do
       p1 = Product.create(title: "P1", price: 100)
       p2 = Product.create(title: "P2", price: 200)
 
-      cart = Cart.new
       3.times { cart.add_item(p1.id) }
       4.times { cart.add_item(p2.id) }
 
@@ -36,7 +34,6 @@ RSpec.describe Cart, type: :model do
       p1 = Product.create(title: "P1", price: 100)
       p2 = Product.create(title: "P2", price: 200)
 
-      cart = Cart.new
       3.times { cart.add_item(p1.id) }
       4.times { cart.add_item(p2.id) }
 
@@ -47,7 +44,6 @@ RSpec.describe Cart, type: :model do
       p1 = Product.create(title: "P1", price: 100)
       p2 = Product.create(title: "P2", price: 200)
 
-      cart = Cart.new
       3.times { cart.add_item(p1.id) }
       4.times { cart.add_item(p2.id) }
 
