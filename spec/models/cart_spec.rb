@@ -2,9 +2,9 @@ require 'rails_helper'
 
 RSpec.describe Cart, type: :model do
 
-  describe "基本功能" do
-    let(:cart) { Cart.new }
+  let(:cart) { Cart.new }
 
+  describe "基本功能" do
     it "可以把商品丟到到購物車裡，然後購物車裡就有東西了。" do
       cart.add_item 1
       expect(cart).not_to be_empty
@@ -58,7 +58,23 @@ RSpec.describe Cart, type: :model do
   end
 
   describe "進階功能" do
-    #it "可以將購物車內容轉換成 Hash 並存到 Session 裡。"
+    it "可以將購物車內容轉換成 Hash 並存到 Session 裡。" do
+      3.times { cart.add_item 1 }
+      2.times { cart.add_item 2 }
+
+      expect(cart.to_hash).to eq cart_hash
+    end
+
     #it "也可以存放在 Session 的內容（Hash 格式），還原成購物車的內容。"
+
+    private
+    def cart_hash
+      {
+        "items" => [
+          {"product_id" => 1, "quantity" => 3},
+          {"product_id" => 2, "quantity" => 2}
+        ]
+      }
+    end
   end
 end
