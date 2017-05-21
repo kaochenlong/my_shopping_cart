@@ -65,7 +65,13 @@ RSpec.describe Cart, type: :model do
       expect(cart.to_hash).to eq cart_hash
     end
 
-    #it "也可以存放在 Session 的內容（Hash 格式），還原成購物車的內容。"
+    it "也可以存放在 Session 的內容（Hash 格式），還原成購物車的內容。" do
+      cart = Cart.from_hash(cart_hash)
+
+      expect(cart.items.length).to be 2
+      expect(cart.items.first.product_id).to be 1
+      expect(cart.items.last.quantity).to be 2
+    end
 
     private
     def cart_hash
