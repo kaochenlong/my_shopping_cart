@@ -7,4 +7,10 @@ Rails.application.routes.draw do
       get :checkout
     end
   end
+
+  resources :orders, only: [:index, :show, :create] do
+    member do
+      put :cancel
+    end
+  end
 end
