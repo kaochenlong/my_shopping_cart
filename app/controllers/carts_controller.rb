@@ -5,6 +5,9 @@ class CartsController < ApplicationController
     redirect_to products_path, notice: "已放入購物車"
   end
 
+  def checkout
+  end
+
   def destroy
     session[:cart9487] = nil
     redirect_to products_path, notice: "購物車已清除!"
