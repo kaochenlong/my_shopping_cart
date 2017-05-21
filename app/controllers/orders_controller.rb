@@ -14,6 +14,9 @@ class OrdersController < ApplicationController
       # 2. 清空購物車
       session[:cart9487] = nil
 
+      # 2.5 寄信通知
+      OrderMailer.order_confirm(@order).deliver_now
+
       # 3. 走回 product 頁面
       redirect_to products_path, notice: "感謝大爺!"
     else
