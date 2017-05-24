@@ -7,6 +7,7 @@ class CartsController < ApplicationController
 
   def checkout
     @order = Order.new
+    @token = Braintree::ClientToken.generate
   end
 
   def destroy
