@@ -1,0 +1,5 @@
+development:
+  braintree:
+    merchant_id: ""
+    public_key: ""
+    private_key: ""

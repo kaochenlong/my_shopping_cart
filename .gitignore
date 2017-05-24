@@ -24,4 +24,4 @@
 
 # configs
 /config/database.yml
-
+/config/application.yml
